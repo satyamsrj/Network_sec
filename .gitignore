@@ -1,2 +1,21 @@
-venv
+# Conda environment
+networksec_env/
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Build artifacts
+build/
+dist/
+*.egg-info/
+
+# Virtual environments
+.venv/
+venv/
+
+# IDE
+.vscode/
+
+# Environment variables
 .env
