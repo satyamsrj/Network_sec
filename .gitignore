@@ -10,6 +10,10 @@ build/
 dist/
 *.egg-info/
 
+#Credential
+mongoDB_cred.py
+
+
 # Virtual environments
 .venv/
 venv/
