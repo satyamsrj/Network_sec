@@ -7,4 +7,7 @@ pymongo
 certifi
 setuptools
 
+yaml
+dill
+pickle 
 -e .

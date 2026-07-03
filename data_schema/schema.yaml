@@ -1,0 +1,35 @@
+columns:
+  Index: int
+  UsingIP: int
+  LongURL: int
+  ShortURL: int
+  Symbol@: int
+  Redirecting//: int
+  PrefixSuffix-: int
+  SubDomains: int
+  HTTPS: int
+  DomainRegLen: int
+  Favicon: int
+  NonStdPort: int
+  HTTPSDomainURL: int
+  RequestURL: int
+  AnchorURL: int
+  LinksInScriptTags: int
+  ServerFormHandler: int
+  InfoEmail: int
+  AbnormalURL: int
+  WebsiteForwarding: int
+  StatusBarCust: int
+  DisableRightClick: int
+  UsingPopupWindow: int
+  IframeRedirection: int
+  AgeofDomain: int
+  DNSRecording: int
+  WebsiteTraffic: int
+  PageRank: int
+  GoogleIndex: int
+  LinksPointingToPage: int
+  StatsReport: int
+  class: int   # target column
+
+target_column: class
