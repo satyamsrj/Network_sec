@@ -84,9 +84,12 @@ class DataIngestion:
             self.split_data_as_train_test(df)
 
             data_ingestion_artifact = DataIngestionArtifact(
-                train_file_path=self.data_ingestion_config.train_file_path,
-                test_file_path=self.data_ingestion_config.test_file_path
-            )
+            train_file_path=self.data_ingestion_config.train_file_path,
+            test_file_path=self.data_ingestion_config.test_file_path,
+            feature_store_file_name=self.data_ingestion_config.feature_store_file_name,
+            data_file_path=self.data_ingestion_config.feature_store_dir  # or wherever raw data is stored
+)
+
             logging.info("Data ingestion pipeline completed successfully.")
             return data_ingestion_artifact
         except Exception as e:

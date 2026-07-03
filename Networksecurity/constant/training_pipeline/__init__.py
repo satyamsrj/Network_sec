@@ -24,3 +24,4 @@ FILE_NAME: str = "phishing.csv"
 
 TRAIN_FILE_NAME: str = "train.csv"
 TEST_FILE_NAME: str = "test.csv"
+FEATURE_STORE_FILE_NAME: str = "feature_store.csv"

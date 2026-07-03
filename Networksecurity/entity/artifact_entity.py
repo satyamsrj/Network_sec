@@ -4,3 +4,5 @@ from dataclasses import dataclass
 class DataIngestionArtifact:
     train_file_path: str
     test_file_path: str
+    feature_store_file_name: str
+    data_file_path: str

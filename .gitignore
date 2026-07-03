@@ -22,4 +22,8 @@ venv/
 .vscode/
 
 # Environment variables
+artifacts/
+logs/
+*.csv
+*.pkl
 .env
