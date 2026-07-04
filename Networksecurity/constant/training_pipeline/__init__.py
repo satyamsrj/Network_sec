@@ -27,3 +27,11 @@ TEST_FILE_NAME: str = "test.csv"
 FEATURE_STORE_FILE_NAME: str = "feature_store.csv"
 
 SCHEMA_FILE_PATH = os.path.join("data_schema", "schema.yaml")
+
+# Directory names for data validation artifacts
+# Data Validation constants
+DATA_VALIDATION_DIR_NAME = "data_validation"
+DATA_VALIDATION_DRIFT_REPORT_DIR_NAME = "drift_report"
+DATA_VALIDATION_DRIFT_REPORT_FILE_NAME = "drift_report.yaml"   # <-- missing constant
+DATA_VALIDATION_VALID_DIR_NAME = "validated"
+DATA_VALIDATION_INVALID_DIR_NAME = "invalid"

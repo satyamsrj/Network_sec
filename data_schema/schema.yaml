@@ -30,6 +30,5 @@ columns:
   GoogleIndex: int
   LinksPointingToPage: int
   StatsReport: int
-  class: int   # target column
-
+  class: int
 target_column: class
