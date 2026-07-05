@@ -1,10 +1,8 @@
 import os
-import sys
 import numpy as np
-import pandas as pd
+
 """
-Data Ingestion related constants are defined in this file. 
-This file is created to avoid hardcoding of values.
+Data Ingestion related constants
 """
 DATA_INGESTION_COLLECTION_NAME = "phishing"
 DATA_INGESTION_DATABASE_NAME = "Networksecurity"
@@ -14,8 +12,7 @@ DATA_INGESTION_INGESTED_DIR = os.path.join(DATA_INGESTION_DIR_NAME, "ingested")
 DATA_INGESTION_TRAIN_TEST_SPLIT_RATIO: float = 0.2
 
 """
-Defining common constants for the project. 
-This file is created to avoid hardcoding of values.
+Common constants
 """
 TARGET_COLUMN = "status"
 PIPELINE_NAME: str = "Networksecurity"
@@ -28,10 +25,30 @@ FEATURE_STORE_FILE_NAME: str = "feature_store.csv"
 
 SCHEMA_FILE_PATH = os.path.join("data_schema", "schema.yaml")
 
-# Directory names for data validation artifacts
-# Data Validation constants
+"""
+Data Validation constants
+"""
 DATA_VALIDATION_DIR_NAME = "data_validation"
 DATA_VALIDATION_DRIFT_REPORT_DIR_NAME = "drift_report"
-DATA_VALIDATION_DRIFT_REPORT_FILE_NAME = "drift_report.yaml"   # <-- missing constant
+DATA_VALIDATION_DRIFT_REPORT_FILE_NAME = "drift_report.yaml"
 DATA_VALIDATION_VALID_DIR_NAME = "validated"
 DATA_VALIDATION_INVALID_DIR_NAME = "invalid"
+
+"""
+Data Transformation constants
+"""
+DATA_TRANSFORMATION_DIR_NAME: str = "data_transformation"
+DATA_TRANSFORMATION_TRANSFORMED_DATA_DIR: str = "transformed"
+DATA_TRANSFORMATION_TRANSFORMED_OBJECT_DIR: str = "transformed_object"
+
+# Preprocessing object file name
+PREPROCESSING_FILE_NAME: str = "preprocessor.pkl"
+TARGET_COLUMN = "class"
+
+
+# KNN imputer parameters
+DATA_TRANSFORMATION_IMPUTER_PARAMS: dict = {
+    'missing_values': np.nan,
+    'n_neighbors': 3,
+    'weights': 'uniform',
+}

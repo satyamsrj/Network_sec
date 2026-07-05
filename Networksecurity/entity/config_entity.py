@@ -30,6 +30,8 @@ class DataIngestionConfig:
         self.train_test_split_ratio = training_pipeline.DATA_INGESTION_TRAIN_TEST_SPLIT_RATIO
 
 class DataValidationConfig:
+
+
     def __init__(self, training_pipeline_config: TrainingPipelineConfig):
         self.data_validation_dir = os.path.join(training_pipeline_config.artifact_dir, "data_validation")
         self.valid_data_dir = os.path.join(self.data_validation_dir, "valid_data")
@@ -40,3 +42,41 @@ class DataValidationConfig:
         self.invalid_test_file_path = os.path.join(self.invalid_data_dir, training_pipeline.TEST_FILE_NAME)
         self.drift_report_file_path = os.path.join(self.data_validation_dir,training_pipeline.DATA_VALIDATION_DRIFT_REPORT_DIR_NAME,
                                    training_pipeline.DATA_VALIDATION_DRIFT_REPORT_FILE_NAME)
+        
+    
+class DataTransformationConfig:
+    def __init__(self, training_pipeline_config: TrainingPipelineConfig):
+        # Base directory for data transformation artifacts
+        self.data_transformation_dir: str = os.path.join(
+            training_pipeline_config.artifact_dir,
+            training_pipeline.DATA_TRANSFORMATION_DIR_NAME
+        )
+
+        # Directory for transformed data
+        transformed_data_dir = os.path.join(
+            self.data_transformation_dir,
+            training_pipeline.DATA_TRANSFORMATION_TRANSFORMED_DATA_DIR
+        )
+
+        # Directory for transformed objects (preprocessor, etc.)
+        transformed_object_dir = os.path.join(
+            self.data_transformation_dir,
+            training_pipeline.DATA_TRANSFORMATION_TRANSFORMED_OBJECT_DIR
+        )
+
+        # Paths for train/test numpy arrays
+        self.transformed_train_file_path: str = os.path.join(
+            transformed_data_dir,
+            training_pipeline.TRAIN_FILE_NAME.replace("csv", "npy")
+        )
+
+        self.transformed_test_file_path: str = os.path.join(
+            transformed_data_dir,
+            training_pipeline.TEST_FILE_NAME.replace("csv", "npy")
+        )
+
+        # Path for the preprocessing object (pickle/dill)
+        self.transformed_object_file_path: str = os.path.join(
+            transformed_object_dir,
+            training_pipeline.PREPROCESSING_FILE_NAME
+        )
