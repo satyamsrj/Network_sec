@@ -5,7 +5,7 @@ from Networksecurity.exception.exception import NetworkSecurityException
 from Networksecurity.logging.logger import logging
 
 
-class NetworkMOdel:
+class NetworkModel:
     def __init__(self,x):
         try:
             x_transform = self.preprocessor.transform(x)
