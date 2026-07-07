@@ -1,15 +1,27 @@
 import sys
+import os
 from Networksecurity.components.data_ingestion import DataIngestion
 from Networksecurity.components.data_validation import DataValidation
 from Networksecurity.components.data_transformation import DataTransformation
+from Networksecurity.components.model_trainer import ModelTrainer
 from Networksecurity.exception.exception import NetworkSecurityException
 from Networksecurity.entity.config_entity import (
     TrainingPipelineConfig,
     DataIngestionConfig,
     DataValidationConfig,
-    DataTransformationConfig
+    DataTransformationConfig,
+    ModelTrainerConfig
 )
 from Networksecurity.logging.logger import logging
+
+
+def get_latest_run_artifact(base_dir="artifacts"):
+    """Helper to get the latest timestamped run folder."""
+    runs = [d for d in os.listdir(base_dir) if os.path.isdir(os.path.join(base_dir, d))]
+    if not runs:
+        raise Exception("No run folders found in artifacts directory.")
+    latest_run = sorted(runs)[-1]  # pick most recent timestamp
+    return os.path.join(base_dir, latest_run)
 
 
 if __name__ == "__main__":
@@ -46,6 +58,17 @@ if __name__ == "__main__":
         data_transformation_artifact = data_transformation.initiate_data_transformation()
         logging.info("Data transformation completed successfully.")
         print(data_transformation_artifact)
+
+        # Step 5: Model Training
+        logging.info("Starting model training process...")
+        model_trainer_config = ModelTrainerConfig(training_pipeline_config=training_pipeline_config)
+        model_trainer = ModelTrainer(
+            model_trainer_config=model_trainer_config,
+            data_transformation_artifact=data_transformation_artifact
+        )
+        model_trainer_artifact = model_trainer.initiate_model_trainer()
+        logging.info("Model training completed successfully.")
+        print(model_trainer_artifact)
 
     except Exception as e:
         raise NetworkSecurityException(e, sys)

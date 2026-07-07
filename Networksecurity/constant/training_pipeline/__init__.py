@@ -11,10 +11,8 @@ DATA_INGESTION_FEATURE_STORE_DIR = os.path.join(DATA_INGESTION_DIR_NAME, "featur
 DATA_INGESTION_INGESTED_DIR = os.path.join(DATA_INGESTION_DIR_NAME, "ingested")
 DATA_INGESTION_TRAIN_TEST_SPLIT_RATIO: float = 0.2
 
-"""
-Common constants
-"""
-TARGET_COLUMN = "status"
+# Common constants
+TARGET_COLUMN = "status"   # keep consistent across pipeline
 PIPELINE_NAME: str = "Networksecurity"
 ARTIFACT_DIR: str = "artifacts"
 FILE_NAME: str = "phishing.csv"
@@ -25,7 +23,7 @@ FEATURE_STORE_FILE_NAME: str = "feature_store.csv"
 
 SCHEMA_FILE_PATH = os.path.join("data_schema", "schema.yaml")
 
-SAVED_MODEL_DIR =os.path.join("saved_models")
+SAVED_MODEL_DIR = os.path.join("saved_models")
 MODEL_FILE_NAME = "model.pkl"
 
 
@@ -56,3 +54,14 @@ DATA_TRANSFORMATION_IMPUTER_PARAMS: dict = {
     'n_neighbors': 3,
     'weights': 'uniform',
 }
+
+# Data Transformation constants
+DATA_TRANSFORMATION_TRAIN_FILE_PATH: str = "train.npy"
+DATA_TRANSFORMATION_TEST_FILE_PATH: str = "test.npy"
+
+# Model trainer constants
+MODEL_TRAINER_DIR_NAME: str = "model_trainer"
+MODEL_TRAINER_TRAINED_MODEL_DIR: str = "trained_model"
+MODEL_TRAINER_TRAINED_MODEL_NAME: str = "model.pkl"   # fixed space
+MODEL_TRAINER_EXPECTED_SCORE: float = 0.6
+MODEL_TRAINER_OVER_FITTING_UNDER_FITTING_THRESHOLD: float = 0.05
