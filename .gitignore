@@ -1,29 +1,56 @@
-# Conda environment
+# --- Conda environment ---
 networksec_env/
 
-# Python cache
+# --- Python cache ---
 __pycache__/
 *.py[cod]
 
-# Build artifacts
+# --- Build artifacts ---
 build/
 dist/
 *.egg-info/
 
-#Credential
+# --- Credentials & secrets ---
 mongoDB_cred.py
+.env
+*.env
+.env.*
 
-
-# Virtual environments
+# --- Virtual environments ---
 .venv/
 venv/
+env/
 
-# IDE
+# --- IDE/editor settings ---
 .vscode/
+.idea/
 
-# Environment variables
+# --- MLflow tracking ---
+mlruns/
+mlflow.db
+*.log
+
+# --- DagsHub artifacts ---
 artifacts/
 logs/
+reports/
+*.json
+
+# --- Data & models ---
+data/
+datasets/
 *.csv
+*.tsv
 *.pkl
-.env
+*.h5
+*.joblib
+*.onnx
+models/
+checkpoints/
+
+# --- Jupyter Notebook checkpoints ---
+.ipynb_checkpoints/
+
+# --- OS files ---
+.DS_Store
+Thumbs.db
