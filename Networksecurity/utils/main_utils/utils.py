@@ -68,7 +68,13 @@ def evaluate_models(x_train, y_train, x_test, y_test, models, params):
         report = {}
         for model_name, model in models.items():
             param_grid = params.get(model_name, {})
-            gs = GridSearchCV(model, param_grid, cv=3)
+            gs = GridSearchCV(
+                 estimator=model,
+                param_grid=param_grid,
+                 cv=3,
+                scoring="accuracy",
+                 n_jobs=1,
+                 )
             gs.fit(x_train, y_train)
 
             model.set_params(**gs.best_params_)  # fixed typo
