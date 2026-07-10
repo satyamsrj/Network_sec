@@ -20,6 +20,9 @@ from Networksecurity.entity.artifact_entity import(
     DataTransformationArtifact,
     ModelTrainerArtifact
 )
+from Networksecurity.cloud.s3_syncer import s3sync
+from Networksecurity.constant.training_pipeline import TRAINING_BUCKET_NAME
+from Networksecurity.constant.training_pipeline import SAVED_MODEL_DIR
 
 class TrainingPipeline:
     def __init__(self):
@@ -69,7 +72,24 @@ class TrainingPipeline:
             return model_trainer_artifact
         except Exception as e:
             raise NetworkSecurityException(e,sys)
-        
+
+    def sync_artifact_dir_to_s3(self):
+        try:
+            aws_bucket_url = f"s3://{TRAINING_BUCKET_NAME}/artifacts/{self.training_pipeline_config.time_stamp}"
+            self.s3_sync.sync_folder_to_s3(folder = self.training_pipeline_config.artifact_dir,aws_bucket_url=aws_bucket_url)
+        except Exception as e:
+            raise NetworkSecurityException(e,sys)
+
+    def sync_save_model_dir_to_s3(self):
+        try:
+            aws_bucket_url = f"s3://{TRAINING_BUCKET_NAME}/final_model/{self.training_pipeline_config.time_stamp}"
+            self.s3_sync.sync_folder_to_s3(folder = self.training_pipeline_config.model_dir,aws_bucket_url=aws_bucket_url)
+        except Exception as e:
+            raise NetworkSecurityException(e,sys)
+
+       
+
+    
     def run_pipeline(self):
         try:
             data_ingestion_artifact = self.start_data_ingestion()
