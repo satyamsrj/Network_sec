@@ -1,9 +1,6 @@
-FROM python:3.10-slim-buster
+FROM python:3.10-slim-bullseye
 
-# Set working directory
 WORKDIR /app
-
-# Copy project files
 COPY . /app
 
 # Install system dependencies + AWS CLI v2
@@ -18,5 +15,4 @@ RUN apt-get update && \
 # Install Python dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Default command
 CMD ["python3", "app.py"]
